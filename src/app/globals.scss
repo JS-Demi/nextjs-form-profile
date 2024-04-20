@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	/* Main */
+
+	position: relative;
+	width: 1366px;
+	height: 953px;
+
+	/* BG/Layout/White */
+	background: #f4f4f5;
+}
+
+.wrapper {
+	position: absolute;
+	width: 900px;
+	height: 704px;
+	left: calc(50% - 900px / 2);
+	top: 24px;
+
+	/* Grey/0 White */
+	background: #ffffff;
+	border-radius: 12px 12px 0px 0px;
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		padding: 0px;
+		gap: 8px;
+		&__avatar {
+			/* Avatar */
+
+			position: absolute;
+			width: 80px;
+			height: 80px;
+			left: 24px;
+			top: 25px;
+
+			/* Preset/Tag/Blue Light */
+			background: #d5e4f7;
+			border-radius: 100px;
+
+			&__logo {
+				/* OS */
+
+				position: absolute;
+				width: 53px;
+				height: 52px;
+				left: calc(50% - 53px / 2 + 0.5px);
+				top: calc(50% - 52px / 2);
+
+				font-family: 'SB Sans Text Mono';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 40px;
+				line-height: 52px;
+				/* identical to box height, or 130% */
+				display: flex;
+				align-items: center;
+				text-align: center;
+
+				/* Blue Grey / 100 */
+				color: #212830;
+			}
+		}
+		&__about {
+			/* Frame 881234368 */
+
+			/* Auto layout */
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 0px;
+			gap: 8px;
+
+			position: absolute;
+			width: 228px;
+			height: 50px;
+			left: 128px;
+			top: 38px;
+
+			&__name {
+				/* Frame 881234367 */
+
+				/* Auto layout */
+
+				width: 124px;
+				height: 26px;
+
+				/* Inside auto layout */
+				flex: none;
+				order: 0;
+				flex-grow: 0;
+				/* Иван Иванов */
+				text-wrap: nowrap;
+				width: 124px;
+				height: 26px;
+
+				/* Headers/H3 Semibold */
+				font-family: 'SB Sans Interface';
+				font-style: normal;
+				font-weight: 600;
+				font-size: 20px;
+				line-height: 26px;
+				/* identical to box height, or 130% */
+				display: flex;
+				align-items: center;
+
+				/* Work Presets/Text White Mode/Primary_G800 */
+				color: #333333;
+
+				/* Inside auto layout */
+				flex: none;
+				order: 0;
+				flex-grow: 0;
+			}
+			&__links {
+				/* Frame 881234369 */
+
+				/* Auto layout */
+				display: flex;
+				padding: 0px;
+				gap: 16px;
+
+				width: 228px;
+				height: 16px;
+
+				/* Inside auto layout */
+				flex: none;
+				order: 1;
+				flex-grow: 0;
+
+				font-size: 16px;
+				line-height: 24px;
+				font-weight: 400;
+				color: rgba(33, 40, 48, 1);
+				.link {
+					/* Auto layout */
+					display: flex;
+					padding: 0px;
+					gap: 4px;
+
+					width: 72px;
+					height: 16px;
+
+					/* Inside auto layout */
+					flex: none;
+					order: 0;
+					flex-grow: 0;
+					svg {
+						/* Icon /Interface / Folder */
+
+						width: 16px;
+						height: 16px;
+					}
+					a {
+						/* Link Text */
+
+						width: 52px;
+						height: 16px;
+
+						/* Text/Text 3 */
+						font-family: 'SB Sans Interface';
+						font-style: normal;
+						font-weight: 400;
+						font-size: 12px;
+						line-height: 16px;
+						/* identical to box height, or 133% */
+
+						/* Purple/100 */
+						color: #5558fa;
+
+						/* Inside auto layout */
+						flex: none;
+						order: 1;
+						flex-grow: 0;
+					}
+				}
+			}
+		}
+	}
+	.divider {
+		position: absolute;
+		width: 852px;
+		height: 0px;
+		left: 24px;
+		top: 129px;
+
+		/* Black Alpha/Alpha 8 */
+		border: 1px solid rgba(0, 0, 0, 0.08);
+	}
+}
