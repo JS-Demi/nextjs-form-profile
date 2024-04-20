@@ -1,8 +1,11 @@
 'use client'
-import { Field, Form, Formik } from 'formik'
+import { useProfileData } from '@/stores/profile-store'
+import { ErrorMessage, Field, Form, Formik, FormikProps } from 'formik'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { FC, useRef } from 'react'
+import { FC } from 'react'
 import * as Yup from 'yup'
+import { useRouter } from '../navigation'
 import FolderIcon from './FolderIcon'
 import PhoneMask from './PhoneMask'
 
@@ -11,42 +14,53 @@ interface IValues {
 	email: string
 }
 
-const validation = Yup.object().shape({
-	phone: Yup.number().required().min(10).max(10),
-	email: Yup.string().required().email(),
-})
-
-const handleSubmit = ({ phone, email }: IValues) => {
-	console.log(phone, email)
-}
-
 const Profile: FC = () => {
-	const inputRef = useRef<HTMLInputElement | null>(null)
+	const t = useTranslations('profile')
+	const router = useRouter()
+	const [phone, email, setData] = useProfileData((state) => [
+		state.phone,
+		state.email,
+		state.setData,
+	])
+
+	const validation = Yup.object().shape({
+		phone: Yup.string()
+			.required(t('errors.required'))
+			.min(18, t('errors.phone'))
+			.max(18, t('errors.phone')),
+		email: Yup.string().required(t('errors.required')).email(t('errors.email')),
+	})
+
+	const handleSubmit = (values: IValues) => {
+		setData(values)
+		router.push('/create')
+	}
+
 	return (
-		<div className='wrapper'>
+		<>
 			<div className='wrapper__info'>
 				<div className='wrapper__info__avatar'>
-					<span className='wrapper__info__avatar__logo'>АИ</span>
+					<span className='wrapper__info__avatar__logo'>{t('avatar')}</span>
 				</div>
 				<div className='wrapper__info__about'>
-					<div className='wrapper__info__about__name'>Дмитрий Иванов</div>
+					<div className='wrapper__info__about__name'>{t('name')}</div>
 					<div className='wrapper__info__about__links'>
 						<div className='link'>
 							<FolderIcon />
 							<Link className='link' href='https://t.me/Miracle_JS'>
-								Telegram
+								{t('telegram')}
 							</Link>
 						</div>
 						<div className='link'>
 							<FolderIcon />
 							<Link className='link' href='https://github.com'>
-								GitHub
+								{t('gitHub')}
 							</Link>
 						</div>
 						<div className='link'>
 							<FolderIcon />
 							<Link className='link' href='https://cv.hexlet.ru'>
-								Resume
+								{t('resume')}
 							</Link>
 						</div>
 					</div>
@@ -55,34 +69,47 @@ const Profile: FC = () => {
 			<hr className='divider' />
 			<Formik
 				initialValues={{
-					phone: '',
-					email: '',
+					phone,
+					email,
 				}}
 				onSubmit={handleSubmit}
 				validationSchema={validation}
+				validateOnBlur={false}
+				validateOnChange={false}
 			>
-				{({ handleChange, values }) => {
+				{({ handleChange, values }: FormikProps<IValues>) => {
 					return (
-						<Form>
+						<Form className='form'>
 							<div className='form-floating'>
-								<label htmlFor='phone'></label>
+								<label htmlFor='phone'>{t('phoneLabel')}</label>
 								<PhoneMask
 									name='phone'
 									type='text'
-									placeholder='+7 (000) 000-00-00'
+									className='form-input'
+									placeholder={t('phonePlaceholder')}
 									value={values.phone}
 									handleChange={handleChange}
 								></PhoneMask>
+								<ErrorMessage className='invalid-tip' component='div' name='phone' />
 							</div>
 							<div className='form-floating'>
-								<label htmlFor='email'></label>
-								<Field name='email' type='text' placeholder='test'></Field>
+								<label htmlFor='email'>{t('emailLabel')}</label>
+								<Field
+									className='form-input'
+									name='email'
+									type='text'
+									placeholder={t('emailPlaceholder')}
+								></Field>
+								<ErrorMessage className='invalid-tip' component='div' name='email' />
 							</div>
+							<button id='button-start' type='submit'>
+								{t('start')}
+							</button>
 						</Form>
 					)
 				}}
 			</Formik>
-		</div>
+		</>
 	)
 }
 
