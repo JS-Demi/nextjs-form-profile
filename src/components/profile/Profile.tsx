@@ -1,13 +1,14 @@
 'use client'
-import { useProfileData } from '@/stores/profile-store'
+import { useProfileData } from './store/profile-store'
 import { ErrorMessage, Field, Form, Formik, FormikProps } from 'formik'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { FC } from 'react'
 import * as Yup from 'yup'
-import { useRouter } from '../navigation'
-import FolderIcon from './FolderIcon'
-import PhoneMask from './PhoneMask'
+import { useRouter } from '../../navigation'
+import FolderIcon from '../FolderIcon'
+import PhoneMask from '../PhoneMask'
+import './profile.scss'
 
 interface IValues {
 	phone: string
@@ -33,7 +34,7 @@ const Profile: FC = () => {
 
 	const handleSubmit = (values: IValues) => {
 		setData(values)
-		router.push('/create')
+		router.push('/create/firstStep')
 	}
 
 	return (

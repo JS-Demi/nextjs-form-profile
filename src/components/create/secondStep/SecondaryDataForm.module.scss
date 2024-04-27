@@ -1,0 +1,48 @@
+.interface {
+	display: flex;
+	flex-direction: column;
+	width: 680px;
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		.advantages {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			input {
+				/* Atom / Input Field */
+
+				box-sizing: border-box;
+
+				/* Auto layout */
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				padding: 12px;
+				gap: 12px;
+
+				width: 300px;
+				height: 44px;
+
+				/* Token / 3 lvl / White Mode / Modal BG */
+				background: #ffffff;
+				/* Black Alpha/Alpha 16 */
+				border: 1px solid rgba(0, 0, 0, 0.16);
+				border-radius: 4px;
+			}
+		}
+		.create {
+			width: 44px;
+			height: 44px;
+			border: 1.5px solid rgba(85, 88, 250, 1);
+			font-size: 20px;
+			color: rgba(85, 88, 250, 1);
+			border-radius: 4px;
+		}
+	}
+}
+.invalid {
+	color: red;
+	font-size: 14px;
+}

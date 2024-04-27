@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 
 import type { Metadata } from 'next'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
+import { Providers } from '../providers'
 
 export const metadata: Metadata = {
 	title: 'Next-js-profile-project',
@@ -21,7 +22,7 @@ export default function LocaleLayout({
 		<html lang={locale}>
 			<body className={inter.className}>
 				<NextIntlClientProvider locale={locale} messages={messages}>
-					{children}
+					<Providers>{children}</Providers>
 				</NextIntlClientProvider>
 			</body>
 		</html>

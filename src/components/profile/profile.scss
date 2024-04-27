@@ -1,0 +1,295 @@
+.wrapper {
+	position: absolute;
+	width: 900px;
+	height: 704px;
+	left: calc(50% - 900px / 2);
+	top: 24px;
+
+	/* Grey/0 White */
+	background: #ffffff;
+	border-radius: 24px;
+	&__info {
+		display: flex;
+		flex-direction: column;
+		padding: 0px;
+		gap: 8px;
+		&__avatar {
+			/* Avatar */
+
+			position: absolute;
+			width: 80px;
+			height: 80px;
+			left: 24px;
+			top: 25px;
+
+			/* Preset/Tag/Blue Light */
+			background: #d5e4f7;
+			border-radius: 100px;
+
+			&__logo {
+				/* OS */
+
+				position: absolute;
+				width: 53px;
+				height: 52px;
+				left: calc(50% - 59px / 2 + 0.5px);
+				top: calc(50% - 52px / 2);
+				font-style: normal;
+				font-weight: 400;
+				font-size: 40px;
+				line-height: 52px;
+				/* identical to box height, or 130% */
+				display: flex;
+				align-items: center;
+				text-align: center;
+
+				/* Blue Grey / 100 */
+				color: #212830;
+			}
+		}
+		&__about {
+			/* Frame 881234368 */
+
+			/* Auto layout */
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 0px;
+			gap: 8px;
+
+			position: absolute;
+			width: 228px;
+			height: 50px;
+			left: 128px;
+			top: 38px;
+
+			&__name {
+				/* Frame 881234367 */
+
+				/* Auto layout */
+
+				width: 124px;
+				height: 26px;
+
+				/* Inside auto layout */
+				flex: none;
+				order: 0;
+				flex-grow: 0;
+				/* Иван Иванов */
+				text-wrap: nowrap;
+				width: 124px;
+				height: 26px;
+
+				/* Headers/H3 Semibold */
+				font-style: normal;
+				font-weight: 600;
+				font-size: 20px;
+				line-height: 26px;
+				/* identical to box height, or 130% */
+				display: flex;
+				align-items: center;
+
+				/* Work Presets/Text White Mode/Primary_G800 */
+				color: #333333;
+
+				/* Inside auto layout */
+				flex: none;
+				order: 0;
+				flex-grow: 0;
+			}
+			&__links {
+				/* Frame 881234369 */
+
+				/* Auto layout */
+				display: flex;
+				padding: 0px;
+				gap: 16px;
+
+				width: 228px;
+				height: 16px;
+
+				/* Inside auto layout */
+				flex: none;
+				order: 1;
+				flex-grow: 0;
+
+				font-size: 16px;
+				line-height: 24px;
+				font-weight: 400;
+				color: rgba(33, 40, 48, 1);
+				.link {
+					/* Auto layout */
+					display: flex;
+					padding: 0px;
+					gap: 4px;
+
+					width: 72px;
+					height: 16px;
+
+					/* Inside auto layout */
+					flex: none;
+					order: 0;
+					flex-grow: 0;
+					svg {
+						/* Icon /Interface / Folder */
+
+						width: 16px;
+						height: 16px;
+					}
+					a {
+						/* Link Text */
+
+						width: 52px;
+						height: 16px;
+
+						/* Text/Text 3 */
+						font-style: normal;
+						font-weight: 400;
+						font-size: 12px;
+						line-height: 16px;
+						/* identical to box height, or 133% */
+
+						/* Purple/100 */
+						color: #5558fa;
+
+						/* Inside auto layout */
+						flex: none;
+						order: 1;
+						flex-grow: 0;
+					}
+				}
+			}
+		}
+	}
+	.divider {
+		position: absolute;
+		width: 852px;
+		height: 0px;
+		left: 24px;
+		top: 129px;
+
+		/* Black Alpha/Alpha 8 */
+		border: 1px solid rgba(0, 0, 0, 0.08);
+	}
+	.form {
+		/* Frame 881234355 */
+
+		/* Auto layout */
+		display: flex;
+		flex-direction: column;
+		padding: 0px;
+		gap: 24px;
+
+		position: absolute;
+		width: 400px;
+		height: 168px;
+		left: 24px;
+		top: 153px;
+		#button-start {
+			/* Button */
+
+			/* Auto layout */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 12px 16px;
+			gap: 8px;
+
+			width: 79px;
+			height: 44px;
+			margin-top: 35px;
+
+			/* Purple/100 */
+			background: #5558fa;
+			border-radius: 4px;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			text-align: left;
+			color: rgba(255, 255, 255, 1);
+		}
+	}
+	.form-floating {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		opacity: 0px;
+
+		width: 400px;
+		height: 72px;
+
+		align-self: stretch;
+		label {
+			//styleName: Text/Text 2;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			text-align: left;
+			gap: 10px;
+		}
+		.form-input {
+			/* Atom / Input Field */
+
+			box-sizing: border-box;
+
+			/* Auto layout */
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			padding: 12px;
+			gap: 12px;
+
+			width: 400px;
+			height: 44px;
+
+			/* Black Alpha/Alpha 4 */
+			background: rgba(0, 0, 0, 0.04);
+			/* Black Alpha/Alpha 16 */
+			border: 1px solid rgba(0, 0, 0, 0.16);
+			border-radius: 4px;
+
+			&::placeholder {
+				//styleName: Text/Text 2;
+
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 20px;
+				text-align: left;
+			}
+			& option:first-child {
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 20px;
+				text-align: left;
+			}
+		}
+	}
+}
+
+.stepper-container {
+	/* Group 2 */
+
+	position: absolute;
+	width: 680px;
+	height: 48px;
+	left: 110px;
+	top: 62px;
+	.steps {
+		/* Steps */
+
+		/* Auto layout */
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding: 0px;
+		gap: 34px;
+
+		position: absolute;
+		height: 48px;
+		left: 0px;
+		right: 0px;
+		top: 0px;
+	}
+}

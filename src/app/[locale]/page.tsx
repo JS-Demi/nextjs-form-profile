@@ -1,4 +1,4 @@
-import Profile from '@/components/Profile'
+import Profile from '@/components/profile/Profile'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 

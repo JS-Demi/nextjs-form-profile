@@ -1,0 +1,132 @@
+.interface {
+	display: flex;
+	flex-direction: column;
+	width: 680px;
+	.form {
+		/* Frame 12 */
+
+		/* Auto layout */
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 0px;
+		gap: 100px;
+		.fields {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+			padding: 0px;
+		}
+		&_floating {
+			/* Input Master */
+
+			/* Auto layout */
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 0px;
+			gap: 8px;
+
+			width: 300px;
+			height: 96px;
+		}
+		&_input {
+			/* Atom / Input Field */
+
+			/* Auto layout */
+			display: flex;
+			padding: 12px;
+			gap: 12px;
+
+			width: 300px;
+			height: 44px;
+
+			/* Token / 3 lvl / White Mode / Modal BG */
+			background: #ffffff;
+			/* Black Alpha/Alpha 16 */
+			border: 1px solid rgba(0, 0, 0, 0.16);
+			border-radius: 4px;
+		}
+		.select_wrapper {
+			/* DropList */
+
+			/* Auto layout */
+			padding: 4px 0px;
+			position: relative;
+			width: 300px;
+			height: 80px;
+			left: 0px;
+			top: -7px;
+
+			/* Grey/0 White */
+			background: #ffffff;
+			/* Shadow / M */
+			box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+			border-radius: 4px;
+
+			/* Inside auto layout */
+			flex: none;
+			order: 1;
+			flex-grow: 0;
+			z-index: 1;
+			div {
+				display: flex;
+				flex-direction: column;
+				padding: 0px;
+				isolation: isolate;
+
+				width: 300px;
+				height: 72px;
+
+				/* Inside auto layout */
+				flex: none;
+				order: 1;
+				align-self: stretch;
+				flex-grow: 0;
+
+				button {
+					/* List Item / Text */
+
+					/* Auto layout */
+					display: flex;
+					flex-direction: row;
+					align-items: flex-start;
+					padding: 8px 12px;
+					gap: 8px;
+
+					width: 300px;
+					height: 36px;
+
+					cursor: pointer;
+				}
+			}
+		}
+		#field_sex {
+			//styleName: Text/Text 2;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			text-align: left;
+			color: rgba(0, 0, 0, 0.48);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		svg {
+			display: flex;
+			justify-content: end;
+		}
+		label {
+			//styleName: Text/Text 2;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			text-align: left;
+			color: rgba(51, 51, 51, 1);
+		}
+	}
+}
+.choosen {
+	color: black !important;
+}

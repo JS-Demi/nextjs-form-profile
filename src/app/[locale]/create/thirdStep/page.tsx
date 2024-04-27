@@ -1,11 +1,11 @@
-import Create from '@/components/Create'
+import AboutMe from '@/components/create/thirdStep/AboutMe'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Create',
+	title: 'about me',
 	description: '',
 }
 
 export default function Page() {
-	return <Create />
+	return <AboutMe />
 }
