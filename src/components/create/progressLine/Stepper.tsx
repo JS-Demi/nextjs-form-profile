@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styles from './Stepper.module.scss'
 import cn from 'classnames'
-import { Progress } from '@chakra-ui/react'
+import { Box, Progress } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 
 interface StepperProps {
@@ -68,7 +68,7 @@ const Stepper: FC<StepperProps> = ({ progress }) => {
 								/>
 							</svg>
 						)}
-						{progress > 1 && (
+						{progress === 50 && (
 							<svg
 								width='4'
 								height='4'
@@ -83,11 +83,23 @@ const Stepper: FC<StepperProps> = ({ progress }) => {
 					<span className={styles.step}>2</span>
 				</div>
 				<div className={thirdStep}>
-					<div className={styles.dot}></div>
+					<div className={styles.dot}>
+						{progress === 100 && (
+							<svg
+								width='4'
+								height='4'
+								viewBox='0 0 4 4'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+							>
+								<circle cx='2.00002' cy='1.9999' r='1.6' fill='white' />
+							</svg>
+						)}
+					</div>
 					<span className={styles.step}>3</span>
 				</div>
 			</div>
-			<div style={{ width: `${progress}%` }} className={styles.progress}></div>
+			<Box w={`${progress}%`} className={styles.progress}></Box>
 		</div>
 	)
 }

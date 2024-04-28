@@ -5,21 +5,27 @@ export enum Gender {
 	Female = 'woman',
 }
 
-export interface IValues {
+export interface IFirstFormFields {
 	nickname: string
 	name: string
 	surname: string
 	sex: Gender | null
 }
 
-interface FormData extends IValues {
-	setData: (values: IValues) => void
+interface UseFormData extends IFirstFormFields {
+	setNickname: (value: string) => void
+	setName: (value: string) => void
+	setSurname: (value: string) => void
+	setSex: (value: Gender) => void
 }
 
-export const useFormData = create<FormData>((set) => ({
+export const useFormData = create<UseFormData>((set) => ({
 	nickname: '',
 	name: '',
 	surname: '',
 	sex: null,
-	setData: (values: IValues) => set(values),
+	setNickname: (nickname) => set({ nickname }),
+	setName: (name) => set({ name }),
+	setSurname: (surname) => set({ surname }),
+	setSex: (sex) => set({ sex }),
 }))

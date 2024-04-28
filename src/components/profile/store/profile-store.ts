@@ -1,16 +1,17 @@
 import { create } from 'zustand'
 
-type ProfileState = {
+export interface IProfileFields {
 	phone: string
 	email: string
 }
-
-type ProfileData = ProfileState & {
-	setData: (values: ProfileState) => void
+interface UseProfileData extends IProfileFields {
+	setPhone: (value: string) => void
+	setEmail: (value: string) => void
 }
 
-export const useProfileData = create<ProfileData>((set) => ({
+export const useProfileData = create<UseProfileData>((set) => ({
 	phone: '',
 	email: '',
-	setData: (values: ProfileState) => set(values),
+	setPhone: (phone) => set({ phone }),
+	setEmail: (email) => set({ email }),
 }))

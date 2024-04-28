@@ -1,0 +1,19 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	justify-content: space-around;
+	height: 100%;
+	width: 100%;
+	align-self: self-start;
+	&__textarea {
+		min-height: 84px;
+		border: 1px solid #00000029;
+		border-radius: 4px;
+		padding: 12px;
+	}
+	&__textarea:focus {
+		outline: none;
+		border: 2px solid rgba(85, 88, 250, 1);
+	}
+}

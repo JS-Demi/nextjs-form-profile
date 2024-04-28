@@ -1,27 +1,34 @@
-import { StateCreator, create } from 'zustand'
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
 
-export type keys = '1' | '2' | '3'
+export type ids = '1' | '2' | '3'
 
-export type Checkboxes = {
-	id: keys
-	completed: boolean
+type Checkboxes = {
+	id: ids
+}
+export interface ICheckboxGroup {
+	checked: ids[]
 }
 
-const initialCheckboxes: Checkboxes[] = [
-	{ id: '1', completed: false },
-	{ id: '2', completed: false },
-	{ id: '3', completed: false },
-]
-
-export interface useCheckbox {
+export interface useCheckbox extends ICheckboxGroup {
 	checkboxes: Checkboxes[]
-	setCheckboxes: (checkboxes: Checkboxes[]) => void
+	check: (id: ids) => void
 }
 
-export const useCheckboxes = create<useCheckbox>((set) => ({
-	checkboxes: initialCheckboxes,
-	setCheckboxes: (checkboxes) =>
-		set({
-			checkboxes,
+const initialCheckboxes: Checkboxes[] = [{ id: '1' }, { id: '2' }, { id: '3' }]
+export const useCheckboxes = create<useCheckbox>()(
+	persist(
+		(set, get) => ({
+			checkboxes: initialCheckboxes,
+			checked: [],
+			check: (id) => {
+				const current = get().checked
+				const checked = current.includes(id)
+					? current.filter((cbx) => cbx !== id)
+					: [...current, id]
+				set({ checked })
+			},
 		}),
-}))
+		{ name: 'checkboxes' }
+	)
+)

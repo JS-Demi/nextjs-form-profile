@@ -3,12 +3,13 @@ import { useProfileData } from './store/profile-store'
 import { ErrorMessage, Field, Form, Formik, FormikProps } from 'formik'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
-import { FC } from 'react'
+import { ChangeEvent, ChangeEventHandler, FC } from 'react'
 import * as Yup from 'yup'
 import { useRouter } from '../../navigation'
 import FolderIcon from '../FolderIcon'
 import PhoneMask from '../PhoneMask'
 import './profile.scss'
+import { useCommonStore } from '../create/store/all-data-store'
 
 interface IValues {
 	phone: string
@@ -18,11 +19,14 @@ interface IValues {
 const Profile: FC = () => {
 	const t = useTranslations('profile')
 	const router = useRouter()
-	const [phone, email, setData] = useProfileData((state) => [
+	const [phone, email, setPhone, setEmail] = useProfileData((state) => [
 		state.phone,
 		state.email,
-		state.setData,
+		state.setPhone,
+		state.setEmail,
 	])
+
+	const setProfile = useCommonStore(({ setProfile }) => setProfile)
 
 	const validation = Yup.object().shape({
 		phone: Yup.string()
@@ -33,10 +37,10 @@ const Profile: FC = () => {
 	})
 
 	const handleSubmit = (values: IValues) => {
-		setData(values)
+		setProfile(values)
 		router.push('/create/firstStep')
 	}
-
+	console.log('render')
 	return (
 		<>
 			<div className='wrapper__info'>
@@ -54,13 +58,16 @@ const Profile: FC = () => {
 						</div>
 						<div className='link'>
 							<FolderIcon />
-							<Link className='link' href='https://github.com'>
+							<Link className='link' href='https://github.com/JS-Demi/JS-Demi'>
 								{t('gitHub')}
 							</Link>
 						</div>
 						<div className='link'>
 							<FolderIcon />
-							<Link className='link' href='https://cv.hexlet.ru'>
+							<Link
+								className='link'
+								href='https://hh.ru/resume/d18ccc4fff0bdb3f550039ed1f304c52537837'
+							>
 								{t('resume')}
 							</Link>
 						</div>
@@ -78,7 +85,7 @@ const Profile: FC = () => {
 				validateOnBlur={false}
 				validateOnChange={false}
 			>
-				{({ handleChange, values }: FormikProps<IValues>) => {
+				{({ handleChange, values, setFieldValue }: FormikProps<IValues>) => {
 					return (
 						<Form className='form'>
 							<div className='form-floating'>
@@ -89,7 +96,10 @@ const Profile: FC = () => {
 									className='form-input'
 									placeholder={t('phonePlaceholder')}
 									value={values.phone}
-									handleChange={handleChange}
+									handleChange={(value: string) => {
+										setFieldValue('phone', value)
+										setPhone(value)
+									}}
 								></PhoneMask>
 								<ErrorMessage className='invalid-tip' component='div' name='phone' />
 							</div>
@@ -100,6 +110,11 @@ const Profile: FC = () => {
 									name='email'
 									type='text'
 									placeholder={t('emailPlaceholder')}
+									onChange={({ target }: ChangeEvent<HTMLInputElement>) => {
+										const { value } = target
+										setFieldValue('email', value)
+										setEmail(value)
+									}}
 								></Field>
 								<ErrorMessage className='invalid-tip' component='div' name='email' />
 							</div>

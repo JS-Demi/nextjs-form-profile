@@ -1,14 +1,28 @@
 import { create } from 'zustand'
-import { keys } from '../checkboxes/checkbox-store'
+import { persist } from 'zustand/middleware'
 
-export type RadioGroup = keys | null
+export type RadioGroup = '1' | '2' | '3'
+type Radio = {
+	id: RadioGroup
+}
 
 export interface UseRadios {
+	radios: Radio[]
 	active: RadioGroup
 	setRadio: (radio: RadioGroup) => void
 }
 
-export const useRadios = create<UseRadios>((set) => ({
-	active: null,
-	setRadio: (radio: RadioGroup) => set({ active: radio }),
-}))
+const initRadios: Radio[] = [{ id: '1' }, { id: '2' }, { id: '3' }]
+
+export const useRadios = create<UseRadios>()(
+	persist(
+		(set) => ({
+			radios: initRadios,
+			active: '1',
+			setRadio: (radio) => set({ active: radio }),
+		}),
+		{
+			name: 'radios',
+		}
+	)
+)
