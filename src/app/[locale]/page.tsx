@@ -8,9 +8,5 @@ export const metadata: Metadata = {
 }
 const inter = Inter({ subsets: ['latin'] })
 export default function Page() {
-	return (
-		<div className={`wrapper ${inter.className}`}>
-			<Profile />
-		</div>
-	)
+	return <Profile />
 }
